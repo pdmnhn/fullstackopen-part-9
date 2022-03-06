@@ -1,7 +1,5 @@
-interface BMIInfo {
-  height: number;
-  weight: number;
-}
+import { BMIInfo, calculateBMI } from "./calculateBMI";
+
 const parseArguments = (args: string[]): BMIInfo => {
   if (args.length < 4) throw new Error("Not enough arguments");
   if (args.length > 4) throw new Error("Too many arguments");
@@ -13,17 +11,6 @@ const parseArguments = (args: string[]): BMIInfo => {
     };
   } else {
     throw new Error("Provided values were not numbers!");
-  }
-};
-
-const calculateBMI = ({ height, weight }: BMIInfo): string => {
-  const bmi = (100 ** 2 * weight) / height ** 2;
-  if (bmi >= 30) {
-    return "Obese (ultra over weight)";
-  } else if (bmi > 25) {
-    return "Overweight (over weight)";
-  } else {
-    return "Normal (healthy weight)";
   }
 };
 
