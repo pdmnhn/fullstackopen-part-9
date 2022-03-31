@@ -1,10 +1,11 @@
 import express from "express";
+import cors from "cors";
 import patientsRouter from "./src/routes/patients";
 import diagnosesRouter from "./src/routes/diagnoses";
 
 const app = express();
 
-app.use(express.static("frontend"));
+app.use(cors());
 app.use(express.json());
 
 app.get("/api/ping", (_req, res) => {

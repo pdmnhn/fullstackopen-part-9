@@ -1,4 +1,5 @@
 import express from "express";
+import data from "../data/patients";
 import {
   addNewPatient,
   getData,
@@ -9,6 +10,16 @@ const patientsRouter = express.Router();
 
 patientsRouter.get("/", (_req, res) => {
   res.status(200).json(getData());
+});
+
+patientsRouter.get("/:id", (req, res) => {
+  console.log("hello");
+  const id: unknown = req.params.id;
+  if (!id || !(typeof id === "string")) {
+    res.status(400).send({ error: "Bad id" });
+    return;
+  }
+  res.status(200).json(data.find((item) => item.id === id));
 });
 
 patientsRouter.post("/", (req, res) => {
