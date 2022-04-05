@@ -13,7 +13,6 @@ patientsRouter.get("/", (_req, res) => {
 });
 
 patientsRouter.get("/:id", (req, res) => {
-  console.log("hello");
   const id: unknown = req.params.id;
   if (!id || !(typeof id === "string")) {
     res.status(400).send({ error: "Bad id" });
